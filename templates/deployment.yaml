@@ -5,7 +5,7 @@ metadata:
   labels:
     app: garfield
 spec:
-  replicas: 3
+  replicas: 4
   selector:
     matchLabels:
       app: garfield
@@ -31,7 +31,7 @@ spec:
               echo '<!DOCTYPE html>
               <html>
               <body style="font-family:sans-serif;text-align:center;background-color:lightblue;">
-              <h1>bli bli</h1>
+              <h1>bla bla</h1>
               <p><b>Hostname:</b> '"$(hostname)"'</p>
               <p><b>Message:</b> '"$CUSTOM_MESSAGE"'</p>
               <p><b>Version:</b> '"$VERSION"'</p>
