@@ -1,36 +1,36 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Chart.Name }}
+  name: garfield
   labels:
-    app: {{ .Chart.Name }}
+    app: garfield
 spec:
-  replicas: {{ .Values.replicas }}
+  replicas: 2
   selector:
     matchLabels:
-      app: {{ .Chart.Name }}
+      app: garfield
   template:
     metadata:
       labels:
-        app: {{ .Chart.Name }}
+        app: garfield
     spec:
       containers:
-        - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.name }}:{{ .Values.image.tag }}"
+        - name: garfield
+          image: nginx:latest
           ports:
             - containerPort: 80
           env:
             - name: CUSTOM_MESSAGE
-              value: {{ .Values.custom_message }}
+              value: "Hi there it's from argocd"
             - name: VERSION
-              value: {{ .Chart.AppVersion }}
+              value: "1.0.3"
           command: ["/bin/sh"]
           args:
             - -c
             - |
               echo '<!DOCTYPE html>
               <html>
-              <body style="font-family:sans-serif;text-align:center;background-color:{{ .Values.color }};">
+              <body style="font-family:sans-serif;text-align:center;background-color:lightblue;">
               <h1>Hi World!</h1>
               <p><b>Hostname:</b> '"$(hostname)"'</p>
               <p><b>Message:</b> '"$CUSTOM_MESSAGE"'</p>

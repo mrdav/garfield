@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata: 
-  name: {{ .Chart.Name }}
+  name: garfield
 spec:
   type: LoadBalancer
   selector:
-    app: {{ .Chart.Name }}
+    app: garfield
   ports:
     - port: 80
       targetPort: 80
