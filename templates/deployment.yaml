@@ -30,8 +30,8 @@ spec:
             - |
               echo '<!DOCTYPE html>
               <html>
-              <body style="font-family:sans-serif;text-align:center;background-color:green;">
-              <h1>Hi World!</h1>
+              <body style="font-family:sans-serif;text-align:center;background-color:lightblue;">
+              <h1>bla bla</h1>
               <p><b>Hostname:</b> '"$(hostname)"'</p>
               <p><b>Message:</b> '"$CUSTOM_MESSAGE"'</p>
               <p><b>Version:</b> '"$VERSION"'</p>
