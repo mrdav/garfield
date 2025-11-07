@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1aplha1
+kind: Application
+metadata:
+  name: {{ .Chart.Name }}
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/mrdav/garfield
+    targetRevision: HEAD
+    path: templates
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
