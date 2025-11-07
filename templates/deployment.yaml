@@ -21,16 +21,16 @@ spec:
             - containerPort: 80
           env:
             - name: CUSTOM_MESSAGE
-              value: "Hi there it's from argocd"
+              value: "Hi there it's from argocd number 2"
             - name: VERSION
-              value: "1.0.3"
+              value: "1.0.5"
           command: ["/bin/sh"]
           args:
             - -c
             - |
               echo '<!DOCTYPE html>
               <html>
-              <body style="font-family:sans-serif;text-align:center;background-color:lightblue;">
+              <body style="font-family:sans-serif;text-align:center;background-color:green;">
               <h1>Hi World!</h1>
               <p><b>Hostname:</b> '"$(hostname)"'</p>
               <p><b>Message:</b> '"$CUSTOM_MESSAGE"'</p>
