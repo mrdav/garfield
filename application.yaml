@@ -1,7 +1,7 @@
-apiVersion: argoproj.io/v1aplha1
+apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: {{ .Chart.Name }}
+  name: garfield
   namespace: argocd
 spec:
   project: default
