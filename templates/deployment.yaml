@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Chart.Name }}
+  labels:
+    app: {{ .Chart.Name }}
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Chart.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Chart.Name }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.name }}:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: 80
+          env:
+            - name: CUSTOM_MESSAGE
+              value: {{ .Values.custom_message }}
+            - name: VERSION
+              value: {{ .Chart.AppVersion }}
+          command: ["/bin/sh"]
+          args:
+            - -c
+            - |
+              echo '<!DOCTYPE html>
+              <html>
+              <body style="font-family:sans-serif;text-align:center;background-color:{{ .Values.color }};">
+              <h1>Hi World!</h1>
+              <p><b>Hostname:</b> '"$(hostname)"'</p>
+              <p><b>Message:</b> '"$CUSTOM_MESSAGE"'</p>
+              <p><b>Version:</b> '"$VERSION"'</p>
+              </body>
+              </html>' > /usr/share/nginx/html/index.html
+              exec nginx -g "daemon off;"

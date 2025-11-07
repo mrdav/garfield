@@ -1,0 +1,6 @@
+replicas: 3
+custom_message: "hi there, this is v1, rotate"
+image:
+  name: "nginx"
+  tag: "latest"
+color: lightblue
